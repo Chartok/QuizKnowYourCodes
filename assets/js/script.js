@@ -51,7 +51,7 @@ const quizQuestions = [
 function startQuiz() {
     displayQuestion();
     startButton.remove();
-    timeLeft = 120;
+    timeLeft = 1200;
 }
 
 // Display questions and answers
@@ -66,7 +66,7 @@ function displayQuestion() {
     }
 }
 
-// Function for quiz time limit ending when time runs out or when user gets too many questions wrong
+// Starts and stops timer when time runs out, or when user answers all questions
 function startTimer() {
     timeLeft = setInterval(function () {
         timeLeft--;
@@ -74,17 +74,11 @@ function startTimer() {
         if (timeLeft === 0) {
             clearInterval(timeLeft);
             endQuiz();
-        } else if (wrongAnswers === 3) {
+        } else if (currentQuestionIndex === quizQuestions.length) {
             clearInterval(timeLeft);
-            endQuiz();
         }
     }
         , 1000);
-}
-
-// Function to display timer
-function displayTimer() {
-    timer.textContent = timeLeft;
 }
 
 // Function to check and track answers when user selects an answer and display next question
