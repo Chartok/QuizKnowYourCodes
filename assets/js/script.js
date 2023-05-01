@@ -1,11 +1,12 @@
-const startButton = document.getElementById("startBtn");
-const quizCard = document.querySelector(".quiz-card");
+const startButton = document.getElementById("start");
+const quizCard = document.querySelector(".quiz");
 const questionDiv = document.querySelector(".question");
 const answerChoices = quizCard.querySelectorAll(".answerChoice");
 const timer = document.querySelector(".timer");
-const score = document.querySelector(".score");
-const initials = document.querySelector(".initials");
-const submitBtn = document.querySelector(".submitBtn");
+const result = document.querySelector(".results");
+const playAgain = document.querySelector(".playAgain");
+const againButton = document.querySelector(".again");
+const header = document.querySelector(".header");
 
 let currentQuestionIndex = 0;
 let timeLeft;
@@ -47,14 +48,22 @@ const quizQuestions = [
     }
 ];
 
-// Start quiz, set timer and remove start button
+// Array for results
+const results = [];
+
+
+
+
+// Start quiz called when start button is clicked
 function startQuiz() {
-    displayQuestion();
-    startButton.remove();
     timeLeft = 1200;
+    startButton.remove();
+    header.remove();
+    startTimer();
+    displayQuestion();
 }
 
-// Display questions and answers
+// Display questions and answers when start quiz funciton is called
 function displayQuestion() {
     if (currentQuestionIndex < quizQuestions.length) {
         const currentQuestion = quizQuestions[currentQuestionIndex];
@@ -81,7 +90,7 @@ function startTimer() {
         , 1000);
 }
 
-// Function to check and track answers when user selects an answer and display next question
+// Function called when user clicks an answer choice checking if answer is correct or incorrect
 function checkAnswer(event) {
     const answerChoice = event.target;
     const correctAnswer = quizQuestions[currentQuestionIndex].correctAnswer;
@@ -94,10 +103,17 @@ function checkAnswer(event) {
         wrongAnswers++;
     }
 
-    for (let i = 0; i < answerChoices.length; i++) {
-        answerChoices[i].removeEventListener("click", checkAnswer);
+    // Taking users choice and pushing it to results array
+    results.push(quizQuestions[currentQuestionIndex].question + " " + answerChoice.innerText);
+    // Function to create a new list item for each result and append to results list
+    function displayResults() {
+        for (let i = 0; i < results.length; i++) {
+            const result = results[i];
+            const li = document.createElement("li");
+            li.textContent = result;
+            score.appendChild(li);
+        }
     }
-
     // Timeout to display next question after 1 seconds
     setTimeout(function() {
         currentQuestionIndex++;
@@ -105,29 +121,11 @@ function checkAnswer(event) {
     }, 1000);
 }
 
+// Display results when quiz is over or time runs out
+function endQuiz() {
+    quizCard.remove();
+    result.
 
 // Event listener for selecting answer
-for (let i = 0; i < answerChoices.length; i++) {
-    answerChoices[i].addEventListener("click", checkAnswer);
-}
 
 // Event listener for start button to start quiz and timer
-startButton.addEventListener("click", function () {
-    startQuiz();
-    startTimer();
-    displayTimer();
-});
-
-// Function ending the quiz if the user runs out of time or if gets too many questions wrong
-function endQuiz() {
-    if (timeLeft === 0) {
-        quizCard.remove();
-        endScreen.show();
-        score.textContent = rightAnswers;
-    } else if (wrongAnswers === 3) {
-        quizCard.remove();
-        endScreen.show();
-        score.textContent = rightAnswers;
-    }
-}
-
