@@ -1,5 +1,5 @@
 const startButton = document.getElementById("start");
-const quizCard = document.querySelector(".quiz");
+const quizCard = document.querySelector(".quiz-card");
 const questionDiv = document.querySelector(".question");
 const answerChoices = quizCard.querySelectorAll(".answerChoice");
 const timer = document.querySelector(".timer");
@@ -9,7 +9,6 @@ const againButton = document.querySelector(".again");
 const header = document.querySelector(".header");
 
 let currentQuestionIndex = 0;
-let ;
 let rightAnswers = 0;
 let wrongAnswers = 0;
 
@@ -51,7 +50,8 @@ const quizQuestions = [
 // Landing page with start button and welcome header on page load
 function init() {
     startButton.addEventListener("click", startQuiz);
-    header.textContent = "Welcome to Quiz Code!";
+    startButton.textContent = "Start Quiz";
+    header.innerText = "Welcome to Quiz Code!";
     quizCard.remove();
     result.remove();
     playAgain.remove();

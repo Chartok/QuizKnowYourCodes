@@ -6,30 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiz:Know_Your_Code</title>
+    <link rel="stylesheet" href="assets/css/reset.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
-    <main>
-        <section>
-            <h2 class="header"></h2>
-            <div class="quiz">
-                <span class="timer"></span>
-                <h2 class="question"></h2>
-                <button class="answerChoice"></button>
-                <button class="answerChoice"></button>
-                <button class="answerChoice"></button>
-                <button class="answerChoice"></button>
+        <div class="container">
+            <p class="header"></p>
+            <div class="quiz-card">
+                <div class="timer"></div>
+                <p class="question"></p>
+                <button type="button" class="answerChoice"></button>
+                <button type="button" class="answerChoice"></button>
+                <button type="button" class="answerChoice"></button>
+                <button type="button" class="answerChoice"></button>
+                <button type="button" class="start"></button>
             </div>
-            <button class="start"></button>
-        </section>
-    </main>
+        </div>
 
-    <article class="results"></article>
-    <span class="playAgain">
-        <button class="again"></button>
-    </span>
-
+    <div class="container">
+        <div class="results"></div>
+        <div class="playAgain">
+            <button class="again"></button>
+        </div>
+    </div>
     <!--
     <div class="container">
         <div class="quiz-card">
@@ -37,9 +37,6 @@
                 <h1>Know Your Code</h1>
                 <button type="button" id="startBtn">Start Quiz</button>
             </div>
-            <div class="timer"></div>
-
-            <div class="score"></div>
             
             <div class="question"></div>
 
