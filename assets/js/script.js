@@ -9,7 +9,7 @@ const againButton = document.querySelector(".again");
 const header = document.querySelector(".header");
 
 let currentQuestionIndex = 0;
-let timeLeft;
+let ;
 let rightAnswers = 0;
 let wrongAnswers = 0;
 
@@ -48,15 +48,29 @@ const quizQuestions = [
     }
 ];
 
-// Array for results
-const results = [];
+// Landing page with start button and welcome header on page load
+function init() {
+    startButton.addEventListener("click", startQuiz);
+    header.textContent = "Welcome to Quiz Code!";
+    quizCard.remove();
+    result.remove();
+    playAgain.remove();
+    againButton.remove();
+}
 
+// End of quiz function to display results and play again button
+function endQuiz() {
+    quizCard.remove();
+    result.textContent = "You got " + rightAnswers + " right and " + wrongAnswers + " wrong!";
+    playAgain.textContent = "Play Again";
+    playAgain.addEventListener("click", function () {
+        location.reload();
+    });
+}
 
-
-
-// Start quiz called when start button is clicked
+// Start quiz called when start button is clicked, 
 function startQuiz() {
-    timeLeft = 1200;
+    timer = 1200;
     startButton.remove();
     header.remove();
     startTimer();
@@ -68,7 +82,7 @@ function displayQuestion() {
     if (currentQuestionIndex < quizQuestions.length) {
         const currentQuestion = quizQuestions[currentQuestionIndex];
         questionDiv.textContent = currentQuestion.question;
-
+        // Displays answer choices for current question
         for (let i = 0; i < currentQuestion.answers.length; i++) {
             answerChoices[i].textContent = currentQuestion.answers[i];
         };
@@ -77,24 +91,25 @@ function displayQuestion() {
 
 // Starts and stops timer when time runs out, or when user answers all questions
 function startTimer() {
-    timeLeft = setInterval(function () {
-        timeLeft--;
-        timer.textContent = timeLeft;
-        if (timeLeft === 0) {
-            clearInterval(timeLeft);
+    timer = setInterval(function () {
+        timer--;
+        timer.textContent = timer;
+        if (timer === 0) {
+            clearInterval(timer);
             endQuiz();
         } else if (currentQuestionIndex === quizQuestions.length) {
-            clearInterval(timeLeft);
+            clearInterval(timer);
         }
     }
         , 1000);
 }
 
-// Function called when user clicks an answer choice checking if answer is correct or incorrect
+// Function  when answer choice clicked called to check if answer is correct or incorrect
 function checkAnswer(event) {
     const answerChoice = event.target;
     const correctAnswer = quizQuestions[currentQuestionIndex].correctAnswer;
 
+    // Check if answer is correct or incorrect
     if (answerChoice.innerText === correctAnswer) {
         answerChoice.color = "green";
         rightAnswers++;
@@ -102,18 +117,10 @@ function checkAnswer(event) {
         answerChoice.color = "red";
         wrongAnswers++;
     }
+    // Store users right or wrong choice to client storage
+    localStorage.setItem("rightAnswers", rightAnswers);
+    localStorage.setItem("wrongAnswers", wrongAnswers);
 
-    // Taking users choice and pushing it to results array
-    results.push(quizQuestions[currentQuestionIndex].question + " " + answerChoice.innerText);
-    // Function to create a new list item for each result and append to results list
-    function displayResults() {
-        for (let i = 0; i < results.length; i++) {
-            const result = results[i];
-            const li = document.createElement("li");
-            li.textContent = result;
-            score.appendChild(li);
-        }
-    }
     // Timeout to display next question after 1 seconds
     setTimeout(function() {
         currentQuestionIndex++;
@@ -121,10 +128,7 @@ function checkAnswer(event) {
     }, 1000);
 }
 
-// Display results when quiz is over or time runs out
-function endQuiz() {
-    quizCard.remove();
-    result.
+// Display results at end of quiz
 
 // Event listener for selecting answer
 
