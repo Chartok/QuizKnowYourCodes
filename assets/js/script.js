@@ -52,10 +52,7 @@ function init() {
     startButton.addEventListener("click", startQuiz);
     startButton.textContent = "Start Quiz";
     header.innerText = "Welcome to Quiz Code!";
-    quizCard.remove();
-    result.remove();
-    playAgain.remove();
-    againButton.remove();
+    quizCard.
 }
 
 // End of quiz function to display results and play again button
