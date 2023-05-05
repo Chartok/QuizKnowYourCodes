@@ -46,21 +46,20 @@ const quizQuestions = [
     }
 ];
 
-
 // Function to load quiz interface, timer, and start button on page load
 function loadQuiz() {
     quizCard.classList.add('hide');
     result.classList.add('hide');
     againButton.classList.add('hide');
-    header.classList.add('hide');
+    header.classList.add('show');
     startButton.classList.remove('hide');
-    startButton.addEventListener('click', startQuiz);
-    displayQuestion();
+    startButton.addEventListener('click', displayQuestion); 
+    timerr();
 }
 
 
 
-// Displays questions and answers as user selects answers
+// Display questions and answers
 function displayQuestion() {
     const currentQuestion = quizQuestions[currentQuestionIndex];
     questionDiv.innerText = quizQuestions.question;
@@ -85,29 +84,9 @@ function timerr() {
     }, 1000);
 }
 
-// Check and display if answer is correct or incorrect when user clicks on answer
-function checkAnswer(event) {
-    const answerChoice = event.target;
-    const answer = answerChoice.innerText;
-    const correctAnswer = quizQuestions.correctAnswer;
-    if (answer === correctAnswer) {
-        result.innerText = 'Correct!';
-        rightAnswers++;
-    } else {
-        result.innerText = 'Incorrect!';
-        wrongAnswers++;
-    }
-    storeAnswer(event);
-    nextQuestion();
-}
 
-// Function to move to next question after 2 seconds when answer is selected
-function nextQuestion() {
-    setTimeout(function () {
-        currentQuestionIndex++;
-        displayQuestion();
-    }, 2000);
-}
+
+
 
 // Function to store answer in local storage
 function storeAnswer(event) {
