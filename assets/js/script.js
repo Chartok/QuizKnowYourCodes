@@ -1,16 +1,15 @@
-const startButton = document.getElementById("start");
+const startButton = document.querySelector(".startButton");
 const quizCard = document.querySelector(".quiz-card");
 const questionDiv = document.querySelector(".question");
-const answerChoices = quizCard.querySelectorAll(".answerChoice");
+const answerChoices = document.querySelectorAll(".answerChoice");
 const timer = document.querySelector(".timer");
 const result = document.querySelector(".results");
-const playAgain = document.querySelector(".playAgain");
-const againButton = document.querySelector(".again");
+const againButton = document.querySelector(".repeatButton");
 const header = document.querySelector(".header");
 
 let currentQuestionIndex = 0;
-let rightAnswers = 0;
-let wrongAnswers = 0;
+let rightAnswers;
+let wrongAnswers;
 
 
 // Array of questions and answers
@@ -47,86 +46,103 @@ const quizQuestions = [
     }
 ];
 
-// Landing page with start button and welcome header on page load
-function init() {
+
+// Function to load quiz interface, timer, and start button on page load
+function loadQuiz() {
+    quizCard.classList.add("hide");
+    result.classList.add("hide");
+    againButton.classList.add("hide");
+    header.classList.add("hide");
+    startButton.classList.remove("hide");
     startButton.addEventListener("click", startQuiz);
-    startButton.textContent = "Start Quiz";
-    header.innerText = "Welcome to Quiz Code!";
-    quizCard.
 }
 
-// End of quiz function to display results and play again button
+
+
+// Displays questions and answers as user selects answers
+function displayQuestion() {
+    const currentQuestion = quizQuestions[currentQuestionIndex];
+    questionDiv.innerText = quizQuestions.question;
+    answerChoices.forEach(function (answerChoice, i) {
+        answerChoice.innerText = quizQuestions.answers[i];
+    }
+    );
+}
+
+
+// Function for timer
+function timerr() {
+    timeLeft = setInterval(function () {
+        timeLeft--;
+        timer.innerText = timeLeft;
+    }, 1000);
+}
+
+// Check and display if answer is correct or incorrect when user clicks on answer
+function checkAnswer(event) {
+    const answerChoice = event.target;
+    const answer = answerChoice.innerText;
+    const correctAnswer = quizQuestions.correctAnswer;
+    if (answer === correctAnswer) {
+        result.innerText = "Correct!";
+        rightAnswers++;
+    } else {
+        result.innerText = "Incorrect!";
+        wrongAnswers++;
+    }
+    storeAnswer(event);
+    nextQuestion();
+}
+
+// Function to move to next question after 2 seconds when answer is selected
+function nextQuestion() {
+    setTimeout(function () {
+        currentQuestionIndex++;
+        displayQuestion();
+    }, 2000);
+}
+
+// Function to store answer in local storage
+function storeAnswer(event) {
+    const answerChoice = event.target;
+    const answer = answerChoice.innerText;
+    localStorage.setItem("userAnswer" + currentQuestionIndex, answer);
+}
+
+// Populate results list with users answers and display the quizQuestions array for comparison
+function displayResults() {
+    const results = [];
+    for (let i = 0; i < quizQuestions.length; i++) {
+        const userAnswer = localStorage.getItem("userAnswer" + i);
+        results.push(userAnswer);
+    }
+    return results;
+}
+
+
+// Event listeners
+startButton.addEventListener("click", displayQuestion);
+answerChoices.forEach(function (answerChoice) {
+    answerChoice.addEventListener("click", checkAnswer);
+}
+);
+
+// Quiz ends when all questions are answered or timer reaches 0
 function endQuiz() {
-    quizCard.remove();
-    result.textContent = "You got " + rightAnswers + " right and " + wrongAnswers + " wrong!";
-    playAgain.textContent = "Play Again";
-    playAgain.addEventListener("click", function () {
+    quizCard.classList.add("hide");
+    result.classList.add("hide");
+    header.classList.add("hide");
+    const results = document.querySelector(".results");
+    results.classList.remove("hide");
+    for (let i = 0; i < results.length; i++) {
+        resultsListItems[i].innerText = quizQuestions[i].question + " - " + displayResults()[i];
+    }
+    againButton.classList.remove("hide");
+    againButton.addEventListener("click", function () {
         location.reload();
     });
 }
 
-// Start quiz called when start button is clicked, 
-function startQuiz() {
-    timer = 1200;
-    startButton.remove();
-    header.remove();
-    startTimer();
-    displayQuestion();
-}
+// Call functions
+endQuiz(displayResults());
 
-// Display questions and answers when start quiz funciton is called
-function displayQuestion() {
-    if (currentQuestionIndex < quizQuestions.length) {
-        const currentQuestion = quizQuestions[currentQuestionIndex];
-        questionDiv.textContent = currentQuestion.question;
-        // Displays answer choices for current question
-        for (let i = 0; i < currentQuestion.answers.length; i++) {
-            answerChoices[i].textContent = currentQuestion.answers[i];
-        };
-    }
-}
-
-// Starts and stops timer when time runs out, or when user answers all questions
-function startTimer() {
-    timer = setInterval(function () {
-        timer--;
-        timer.textContent = timer;
-        if (timer === 0) {
-            clearInterval(timer);
-            endQuiz();
-        } else if (currentQuestionIndex === quizQuestions.length) {
-            clearInterval(timer);
-        }
-    }
-        , 1000);
-}
-
-// Function  when answer choice clicked called to check if answer is correct or incorrect
-function checkAnswer(event) {
-    const answerChoice = event.target;
-    const correctAnswer = quizQuestions[currentQuestionIndex].correctAnswer;
-
-    // Check if answer is correct or incorrect
-    if (answerChoice.innerText === correctAnswer) {
-        answerChoice.color = "green";
-        rightAnswers++;
-    } else {
-        answerChoice.color = "red";
-        wrongAnswers++;
-    }
-    // Store users right or wrong choice to client storage
-    localStorage.setItem("rightAnswers", rightAnswers);
-    localStorage.setItem("wrongAnswers", wrongAnswers);
-
-    // Timeout to display next question after 1 seconds
-    setTimeout(function() {
-        currentQuestionIndex++;
-        displayQuestion();
-    }, 1000);
-}
-
-// Display results at end of quiz
-
-// Event listener for selecting answer
-
-// Event listener for start button to start quiz and timer

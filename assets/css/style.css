@@ -1,34 +1,106 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .quiz-card {
-    width: 500px;
-    height: 300px;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .question {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .answerChoice {
-    font-size: 18px;
-    padding: 10px;
-    border: 1px solid black;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .answerChoice:hover {
-    background-color: lightgray;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.quiz-card {
+  background-color: rgba(80, 85, 77, 0.637);
+  color: white;
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.timer {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+}
+
+h2 {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+}
+
+p {
+  font-size: 18px;
+  text-align: center;
+  display: block;
+}
+
+.question {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.choiceButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.answerChoice {
+  font-size: 18px;
+  border: 1px solid rgb(184, 182, 182);
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100px;
+  text-align: center;
+  height: 45px;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+}
+
+.answerChoice:hover {
+  box-shadow: 2px 3px 3px rgb(184, 182, 182);
+}
+
+.startButton {
+  font-size: 18px;
+  border: 1px solid rgb(184, 182, 182);
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100px;
+  text-align: center;
+  margin: 0 auto;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.repeatButton {
+  font-size: 18px;
+  border: 1px solid rgb(184, 182, 182);
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100px;
+  text-align: center;
+  margin: 0 auto;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
