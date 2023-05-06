@@ -49,9 +49,6 @@ const quizQuestions = [
 // Function to load quiz interface, timer, and start button on page load
 function loadQuiz() {
     quizCard.classList.add('hide');
-    for (answerChoices of quizQuestions.answers) {
-        answerChoices.style.display = 'none';
-    }
     result.classList.add('hide');
     againButton.classList.add('hide');
     header.classList.add('show');
@@ -64,9 +61,17 @@ function loadQuiz() {
 
 // Display questions and answers
 function displayQuestion() {
-    const currentQuestion = quizQuestions.question.length;
-    for (currentQuestion = 0; currentQuestion < quizQuestions.question.length; currentQuestion++);
-    return currentQuestion;
+    startButton.classList.add('hide');
+    quizCard.classList.remove('hide');
+    header.classList.remove('show');
+    for (let i = 0; i < quizQuestions.length; i++) {
+        question.innerText = quizQuestions[i].question;
+        for (let j = 0; j < quizQuestions[i].answers.length; j++) {
+            answerChoices[j].style.display = 'block';
+            answerChoices[j].innerText = quizQuestions[i].answers[j];
+            answerChoices[j].addEventListener('click', checkAnswer);
+        }
+    }
 }
 
 
