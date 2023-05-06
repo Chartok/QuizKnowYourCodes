@@ -41,13 +41,8 @@ p {
 .question {
   font-size: 24px;
   font-weight: bold;
-}
-
-.choiceButtons {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  display: block;
 }
 
 .answerChoice {
@@ -59,7 +54,6 @@ p {
   text-align: center;
   height: 45px;
   display: flex;
-
   justify-content: center;
   align-items: center;
   margin: 0 10px;
@@ -83,6 +77,10 @@ p {
   align-items: center;
 }
 
+.startButton:hover {
+  box-shadow: 2px 3px 3px rgb(184, 182, 182);
+}
+
 .repeatButton {
   font-size: 18px;
   border: 1px solid rgb(184, 182, 182);
@@ -95,6 +93,10 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.repeatButton:hover {
+  box-shadow: 2px 3px 3px rgb(184, 182, 182);
 }
 
 .results {

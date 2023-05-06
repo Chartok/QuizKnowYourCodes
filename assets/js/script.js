@@ -1,13 +1,13 @@
 const startButton = document.querySelector('.startButton');
 const quizCard = document.querySelector('.quiz-card');
-const questionDiv = document.querySelector('.question');
-const answerChoices = document.getElementsByClassName('.answerChoice');
+const question = document.querySelector('.question');
+const answerChoices = document.querySelectorAll('.answerChoice');
 const timer = document.querySelector('.timer');
 const result = document.querySelector('.results');
 const againButton = document.querySelector('.repeatButton');
 const header = document.querySelector('.header');
 
-let currentQuestionIndex = 0;
+
 let rightAnswers;
 let wrongAnswers;
 
@@ -49,39 +49,39 @@ const quizQuestions = [
 // Function to load quiz interface, timer, and start button on page load
 function loadQuiz() {
     quizCard.classList.add('hide');
+    for (answerChoices of quizQuestions.answers) {
+        answerChoices.style.display = 'none';
+    }
     result.classList.add('hide');
     againButton.classList.add('hide');
     header.classList.add('show');
     startButton.classList.remove('hide');
-    startButton.addEventListener('click', displayQuestion); 
-    timerr();
+    startButton.addEventListener('click', displayQuestion, timerr); 
+    
 }
 
 
 
 // Display questions and answers
 function displayQuestion() {
-    const currentQuestion = quizQuestions[currentQuestionIndex];
-    questionDiv.innerText = quizQuestions.question;
-    currentQuestion = questionDiv.innerText;
-    for (let currentQuestionIndex = 0; currentQuestionIndex < quizQuestions.length; currentQuestionIndex++) {
-        return currentQuestion[currentQuestionIndex];
-    }
-
-    const currentChoices = quizQuestions[currentQuestionIndex].answers;
-    answerChoices.innerText = quizQuestions.answers;
-    currentChoices = answerChoices.innerText;
-
-    
+    const currentQuestion = quizQuestions.question.length;
+    for (currentQuestion = 0; currentQuestion < quizQuestions.question.length; currentQuestion++);
+    return currentQuestion;
 }
 
 
+    
+
+/*
+
 // Function for timer
 function timerr() {
-    timeLeft = setInterval(function () {
+    timeLeft = 120;
+        setInterval(function () {
         timeLeft--;
         timer.innerText = timeLeft;
-    }, 1000);
+        },
+            1000);
 }
 
 
@@ -97,12 +97,10 @@ function storeAnswer(event) {
 
 // Populate results list with users answers and display the quizQuestions array for comparison
 function displayResults() {
-    const results = [''];
     for (let i = 0; i < quizQuestions.length; i++) {
         const userAnswer = localStorage.getItem('userAnswer' + i);
         results.push(userAnswer);
     }
-    return results[''];
 }
 
 
@@ -123,7 +121,6 @@ function endQuiz() {
         location.reload();
     });
 }
-
+*/
 // Call functions
-endQuiz(displayResults());
-
+loadQuiz();
