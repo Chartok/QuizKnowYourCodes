@@ -1,7 +1,7 @@
 const startButton = document.querySelector('.startButton');
 const quizCard = document.querySelector('.quiz-card');
 const question = document.querySelector('.question');
-const answerChoices = document.querySelectorAll('.answerChoice');
+const answerChoicesContainer = document.querySelectorAll('.answerChoicesContainer');
 const timer = document.querySelector('.timer');
 const result = document.querySelector('.results');
 const againButton = document.querySelector('.repeatButton');
@@ -53,79 +53,31 @@ function loadQuiz() {
     againButton.classList.add('hide');
     header.classList.add('show');
     startButton.classList.remove('hide');
-    startButton.addEventListener('click', displayQuestion, timerr); 
+    startButton.addEventListener('click', displayQuestion); 
     
 }
 
 
-
-// Display questions and answers
+// Function to display current question
 function displayQuestion() {
     startButton.classList.add('hide');
     quizCard.classList.remove('hide');
     header.classList.remove('show');
-    for (let i = 0; i < quizQuestions.length; i++) {
-        question.innerText = quizQuestions[i].question;
-        for (let j = 0; j < quizQuestions[i].answers.length; j++) {
-            answerChoices[j].style.display = 'block';
-            answerChoices[j].innerText = quizQuestions[i].answers[j];
-            answerChoices[j].addEventListener('click', checkAnswer);
-        }
+    for (let i = 0; i < quizQuestions[i].length; i++) {
+        return question.innerText = quizQuestions[i].question; 
+    }
+}
+
+// Function to display possible answers for current question
+function displayAnswers() {
+    for (let i = 0; i < quizQuestions[i].answers.length; i++) {
+        return answerChoices.innerText = quizQuestions[i].answers[i];
     }
 }
 
 
     
 
-/*
 
-// Function for timer
-function timerr() {
-    timeLeft = 120;
-        setInterval(function () {
-        timeLeft--;
-        timer.innerText = timeLeft;
-        },
-            1000);
-}
-
-
-
-
-
-// Function to store answer in local storage
-function storeAnswer(event) {
-    const answerChoice = event.target;
-    const answer = answerChoice.innerText;
-    localStorage.setItem('userAnswer' + currentQuestionIndex, answer);
-}
-
-// Populate results list with users answers and display the quizQuestions array for comparison
-function displayResults() {
-    for (let i = 0; i < quizQuestions.length; i++) {
-        const userAnswer = localStorage.getItem('userAnswer' + i);
-        results.push(userAnswer);
-    }
-}
-
-
-
-
-// Quiz ends when all questions are answered or timer reaches 0
-function endQuiz() {
-    quizCard.classList.add('hide');
-    result.classList.add('hide');
-    header.classList.add('hide');
-    const results = document.querySelector('.results');
-    results.classList.remove('hide');
-    for (let i = 0; i < results.length; i++) {
-        resultsListItems[i].innerText = quizQuestions[i].question + ' - ' + displayResults()[i];
-    }
-    againButton.classList.remove('hide');
-    againButton.addEventListener('click', function () {
-        location.reload();
-    });
-}
-*/
 // Call functions
 loadQuiz();
