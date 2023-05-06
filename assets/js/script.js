@@ -69,10 +69,10 @@ function displayQuestion() {
 
 // Display answers for current question by appending them to the answerChoicesContainer
 function displayAnswers() {
-    answerChoicesContainer.classList.remove('hide');
+    const answerChoice = document.createElement('div');
+    answerChoice.classList.add('answerChoice');
     for (let i = 0; i < quizQuestions[currentQuestion].answers.length; i++) {
-        const answerChoice = document.createElement('div');
-        answerChoice.classList.add('answerChoice');
+        answerChoicesContainer.appendSibling(answerChoice);
         answerChoice.innerText = quizQuestions[currentQuestion].answers[i];
     }
 }
