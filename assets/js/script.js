@@ -1,11 +1,11 @@
 const startButton = document.querySelector('.startButton');
 const quizCard = document.querySelector('.quiz-card');
 const question = document.querySelector('.question');
-const answerChoicesContainer = document.querySelector('.answerChoicesContainer');
 const timer = document.querySelector('.timer');
 const result = document.querySelector('.results');
 const againButton = document.querySelector('.repeatButton');
 const header = document.querySelector('.header');
+
 let currentQuestion = 0;
 let rightAnswers;
 let wrongAnswers;
@@ -47,38 +47,31 @@ const quizQuestions = [
 
 // Load quiz interface and header on page load
 function loadQuiz() {
-    timer.classList.add('hide');
-    quizCard.classList.add('hide');
-    result.classList.add('hide');
-    againButton.classList.add('hide');
-    header.classList.add('show');
-}
-
+    displayQuestion();
+    displayAnswers();
+};
 
 
 // Display current question when the quiz starts
 function displayQuestion() {
-    timer.classList.remove('hide');
-    startButton.classList.add('hide');
-    quizCard.classList.remove('hide');
-    header.classList.remove('show');
-    for (let i = 0; i < quizQuestions[i].length; i++) {
-        return question.innerText = quizQuestions[i].question;
-    }
-}
+    for (let i = 0; i < quizQuestions[currentQuestion].length; i++);
+    return question.innerText = quizQuestions[currentQuestion];
+};
+
+console.log(displayQuestion());
 
 // Display answers for current question by appending them to the answerChoicesContainer
+const answerChoices = document.createElement('div');
+for (let i = 0; i < answerChoices.length; i++) {
+    question.appendSibling(answerChoices);
+};
+
 function displayAnswers() {
-    const answerChoice = document.createElement('div');
-    answerChoice.classList.add('answerChoice');
     for (let i = 0; i < quizQuestions[currentQuestion].answers.length; i++) {
-        answerChoicesContainer.appendSibling(answerChoice);
-        answerChoice.innerText = quizQuestions[currentQuestion].answers[i];
-    }
-}
+        answerChoices.innerText = quizQuestions[currentQuestion].answers[i];   
+    };
 
-
-
+};
 
 
 

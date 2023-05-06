@@ -1,3 +1,4 @@
+
 .container {
   display: flex;
   justify-content: center;
@@ -44,6 +45,16 @@ p {
   font-weight: bold;
   text-align: center;
   display: block;
+}
+
+.answerChoice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  color: #000;
+  font: 16px Helvetica, Arial, sans-serif;
 }
 
 .startButton {
