@@ -5,57 +5,38 @@ const timer = document.querySelector('.timer');
 const result = document.querySelector('.results');
 const againButton = document.querySelector('.repeatButton');
 const header = document.querySelector('.header');
-
-let currentQuestion = 0;
 let rightAnswers;
 let wrongAnswers;
 
 
 // Array of quiz questions
-const quizQuestions = [
-    {
-        question: 'What is an Array?',
-        answers: ['A list of items', 'A list of objects', 'A list of variables', 'All of the above'],
-        correctAnswer: 'All of the above',
-    },
-    {
-        question: 'What is a String?',
-        answers: ['Characters used to represent text', 'A list of characters', 'A list of numbers', 'A length of rope'],
-        correctAnswer: 'Characters used to represent text',
-    },
-    {
-        question: 'What is a Boolean?',
-        answers: ['A true or false value', 'A list of true or false values', 'A list of numbers', 'A list of characters'],
-        correctAnswer: 'A true or false value',
-    },
-    {
-        question: 'What is a Function?',
-        answers: ['A list of tasks', 'Code designed to perform a particular task', 'A list of objects', 'A list of items'],
-        correctAnswer: 'Code designed to perform a particular task',
-    },
-    {
-        question: 'What is a Variable?',
-        answers: ['A container for storing data values', 'A list of variables', 'A list of objects', 'A list of items'],
-        correctAnswer: 'A container for storing data values',
-    },
-    {
-        question: 'What is an Object?',
-        answers: ['A list of keys with specified values', 'A list of variables and keys', 'A physical thing that can be touched', 'A list of items and objects'],
-        correctAnswer: 'A list of keys with specified values',
-    }
+const quizQuestions = [ 'What is an Array?', 'What is a String?', 'What is a Boolean?','What is a Function?','What is a Variable?', 'What is an Object?'
 ];
 
-// Load quiz interface and header on page load
-function loadQuiz() {
-    displayQuestion();
-    displayAnswers();
-};
+// Array of multiple choice answers
+const multipleChoice = [
+    ['A list of items', 'A list of objects', 'A list of variables', 'All of the above'],
+    ['Characters used to represent text', 'A list of characters', 'A list of numbers', 'A length of rope'],
+    ['A true or false value', 'A list of true or false values', 'A list of numbers', 'A list of characters'],
+    ['A list of tasks', 'Code designed to perform a particular task', 'A list of objects', 'A list of items'],
+    ['A container for storing data values', 'A list of variables', 'A list of objects', 'A list of items'],
+    ['A list of keys with specified values', 'A list of variables and keys', 'A physical thing that can be touched', 'A list of items and objects']
+]
+
+// Array of correct answers
+const correctAnswers = ['All of the above', 'Characters used to represent text', 'A true or false value', 'Code designed to perform a particular task', 'A container for storing data values', 'A list of keys with specified values'
+];
 
 
-// Display current question when the quiz starts
+
+
+
+
+// Display current question
 function displayQuestion() {
-    for (let i = 0; i < quizQuestions[currentQuestion].length; i++);
-    return question.innerText = quizQuestions[currentQuestion];
+    const currentQuestion = quizQuestions[0];
+    for (let i = 0; i < quizQuestions.length; i++);
+    return question.innerText = currentQuestion;
 };
 
 console.log(displayQuestion());
@@ -66,14 +47,12 @@ for (let i = 0; i < answerChoices.length; i++) {
     question.appendSibling(answerChoices);
 };
 
-function displayAnswers() {
+function displayMultipleChoice() {
     for (let i = 0; i < quizQuestions[currentQuestion].answers.length; i++) {
-        answerChoices.innerText = quizQuestions[currentQuestion].answers[i];   
+        answerChoices.innerText = quizQuestions[currentQuestion].answers[i];
     };
 
 };
 
-
-
 // Call functions
-loadQuiz();
+// loadQuiz();
