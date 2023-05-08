@@ -24,18 +24,14 @@
   font-weight: bold;
   text-align: center;
   display: flex;
-  border: 2px solid black;
+  border: 1px solid black;
+  height: 50px;
+  width: 50px;
 }
 
 h2 {
   font-size: 36px;
   font-weight: bold;
-  text-align: center;
-  display: block;
-}
-
-p {
-  font-size: 18px;
   text-align: center;
   display: block;
 }
@@ -47,7 +43,7 @@ p {
   display: block;
 }
 
-.answerChoice {
+#multiChoice {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,6 +51,9 @@ p {
   margin: 0 auto;
   color: #000;
   font: 16px Helvetica, Arial, sans-serif;
+  border: #000 1px solid;
+  height: 200px;
+  width: 450px;
 }
 
 .startButton {
@@ -62,7 +61,6 @@ p {
   border: 1px solid rgb(184, 182, 182);
   border-radius: 5px;
   cursor: pointer;
-  width: 100px;
   text-align: center;
   margin: 0 auto;
   height: 50px;
@@ -80,7 +78,6 @@ p {
   border: 1px solid rgb(184, 182, 182);
   border-radius: 5px;
   cursor: pointer;
-  width: 100px;
   text-align: center;
   margin: 0 auto;
   height: 50px;

@@ -1,10 +1,10 @@
 const startButton = document.querySelector('.startButton');
 const quizCard = document.querySelector('.quiz-card');
-const question = document.querySelector('.question');
+let question = document.querySelector('.question');
 const timer = document.querySelector('.timer');
-const result = document.querySelector('.results');
+let result = document.querySelector('.results');
 const againButton = document.querySelector('.repeatButton');
-const answerChoiceContainer = document.getElementById('#multiChoice');
+let answerChoiceContainer = document.querySelector('.multiChoice');
 const header = document.querySelector('.header');
 let rightAnswers;
 let wrongAnswers;
@@ -34,30 +34,46 @@ const correctAnswers = ['All of the above', 'Characters used to represent text',
 
 I need to write a function that will iterate over the multipleChoice 2D array and append the strings to the answerChoiceContainer div corresponding to the current question.
 
-I need to write a function with an event listener that listens for a click on the answers and compares the string of the answer to the string of the correct answer. If the strings match, then the user gets a point. If the strings do not match, then the user does not get a point.
+I need to write a function with an event listener that listens for a click on the answers and store it client-side locally so that the user can see their answers at the end of the quiz.
+
+I need to write a function that will display the user's answers at the end of the quiz.
 
 I need to write a function that will move to the next question in the quizQuestions array and display the next question and answers in the multipleChoice array.
 
-I need to write a function that will take the user's selected answers and store it client-side locally so that the user can see their score at the end of the quiz.
+I need to write a function that will start the quiz when the user clicks the "Start" button.
 
-I need to write a function that will display the user's score at the end of the quiz.
+I need to write a function that will restart the quiz when the user clicks the "Repeat Quiz" button.
 
 */
 
-function questionMultiChoice(quizQuestions, multipleChoice) {
-    const result = [];
+function questions(quizQuestions, multipleChoice) {
+    let question = [];
     for (let i = 0; i < quizQuestions.length; i++) {
         const obj = {
             question: quizQuestions[i],
-            answers: multipleChoice[i]
         };
-        result.push(obj);
+        question.push(obj);
     }
-    return result;
+    let answers = [];
+    for (let i = 0; i < multipleChoice.length; i++) {
+        const obj = {
+            answers: multipleChoice[i],
+        };
+        answers.push(obj);
+    }
+    return question, answers;
 }
 
-console.log(questionMultiChoice(quizQuestions, multipleChoice));
+console.log(questions(quizQuestions, multipleChoice));
 
+console.log(answerChoiceContainer);
+
+question.innerHTML = questions(quizQuestions, multipleChoice)[0];
+const answers = document.createElement('div');
+answers.classList.add('answers');
+answers.appendChild(answerChoiceContainer);
+answers.innerHTML = questions(quizQuestions, multipleChoice);
+console.log(answers);
 
 // Display current question
 // function displayQuestion() {
