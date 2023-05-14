@@ -1,3 +1,6 @@
+.hide{
+  display: none !important;
+}
 
 .container {
   display: flex;
@@ -17,6 +20,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.timer-container {
+  display: flex;
 }
 
 .timer {

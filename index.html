@@ -8,19 +8,31 @@
     <title>Quiz:Know_Your_Code</title>
     <link rel="stylesheet" href="assets/css/reset.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-    
+
 </head>
 
 <body>
+    <div class="timer">Time Remaining: <span id="time">0</span></div>
+
     <div class="container">
-        <div class="quiz-card">
-            <h2 class="header">Welcome to QuizCode!</h2>
-            <div class="timer"></div>
-            <p class="question"></p>
-            <div class="multiChoice"></div>          
-            <button type="button" class="startButton">START</button>
-            <div class="results"></div>
-            <button type="button" class="repeatButton">REPEAT QUIZ</button>
+        <div id="start-here" class="start-card">
+            <h1 class="header">Welcome to QuizCode!</h1>
+            <p id="about">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat delectus assumenda tempore nesciunt obcaecati natus laborum, eius ducimus pariatur quibusdam cupiditate molestiae labore? Odit sapiente totam at sed vero velit.</p>
+            <button type="button" id="start-button">START</button>
+        </div>
+
+        <div class="quiz-card hide">
+
+            <h2 class="question">test</h2>
+            <div class="multi-choice"></div>
+
+        </div>
+        <div class="end-card hide">
+            <h2>Congrats</h2>
+            <p>score</p>
+            <label for="email">opt:</label>
+            <input type="email">
+            <button type="submit">submit</button>
         </div>
     </div>
     <script src="assets/js/script.js"></script>
