@@ -1,0 +1,161 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.hide{
+  display: none !important;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.start-card {
+  background-color: #fff;
+  color: #333;
+  width: 500px;
+  max-width: 90%;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.start-card h1 {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.start-card p {
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.quiz-card {
+  background-color: #fff;
+  color: #333;
+  width: 500px;
+  height: auto;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.timer-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.timer {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ccc;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  top: 16pc;
+  right: 35pc;
+  position: absolute;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.question {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#multi-choice {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+.start-button,
+.repeat-button {
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  margin: 0 auto;
+  height: 50px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.start-button:hover,
+.repeat-button:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.leaderboards {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.leaderboards a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.leaderboards a:hover {
+  text-decoration: underline;
+}

@@ -5,33 +5,44 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiz:Know_Your_Code</title>
+    <title>Do You Program?</title>
     <link rel="stylesheet" href="assets/css/reset.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
-
+    <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 
 <body>
-    <div class="timer">Time Remaining: <span id="time">0</span></div>
+    <div class="leaderboards">
+        <a href="leaderboard.html">Leaderboards</a>
+    </div>
+    <div class="timer">Time: <span id="time">0</span></div>
 
     <div class="container">
-        <div id="start-here" class="start-card">
-            <h1 class="header">Welcome to QuizCode!</h1>
-            <p id="about">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat delectus assumenda tempore nesciunt obcaecati natus laborum, eius ducimus pariatur quibusdam cupiditate molestiae labore? Odit sapiente totam at sed vero velit.</p>
-            <button type="button" id="start-button">START</button>
+        <div class="start-card" id="start-card">
+            <h1 class="header">Welcome!</h1>
+            <p id="about">Are you a programmer? Take this short quiz if you know your programming!</p>
+            <button type="button" id="start-button">Challenge Accepted!</button>
         </div>
 
         <div class="quiz-card hide" id="questions">
-
-            <h2 class="question-title">test</h2>
-            <div class="multi-choice"></div>
-
+            <h2 class="question-title" id="question-title"></h2>
+            <div class="multi-choice" id="multi-choice"></div>
         </div>
+
         <div id="end-card" class="hide">
-            <div id="results"></div>
+            <h2>Fin.</h2>
+            <p>Your score: <span id="score"></span></p>
+            <form action="" method="post">
+                <label for="initials">Enter your initials:</label>
+                <input type="text" name="initials" id="initials" />
+                <button type="submit" id="submit-button">Submit</button>
+            </form>
         </div>
+
+        <div id="feedback" class="feedback hide"></div>
     </div>
-    <script src="assets/js/script.js"></script>
+
+    <script src="assets/js/questions.js"></script>
+    <script src="assets/js/quiz-logic.js"></script>
 </body>
 
 </html>
