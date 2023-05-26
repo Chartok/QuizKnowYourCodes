@@ -1,5 +1,7 @@
 
   # Quiz: Know your codes
+  
+  ![screenshot of quiz](/assets/images/quiz.jpg)
 
   ## Description
 
